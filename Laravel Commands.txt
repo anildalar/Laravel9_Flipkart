@@ -78,6 +78,9 @@ composer install
 php artisan key:generate
 php artisan migrate
 php artisan db:seed to run seeders, if any.
+
+php artisan migrate:fresh --seed
+
 php artisan serve
 
 How to create a controller file in laravel
@@ -284,3 +287,12 @@ URL::to('/')
 URL Generation
 
 route() ------- point to ---> web.php (Laravel Routing System)
+
+
+
+ php artisan db:seed -----> will execute the database/seeders/DatabaseSeeder.php
+
+
+
+
+ How to prefix the api in laravel

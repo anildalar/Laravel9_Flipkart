@@ -32,13 +32,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/anil', function () {
+Route::get('/v1/anil', function () {
     $name = 'Anil Dollor';
     //Associative array [key=>value]
     return view('anil',["abc"=>$name]);
 });
 
-Route::get('/krishnapal', function () {
+Route::get('/v1/krishnapal', function () {
     $fullname = 'Krishnal Singh';
     return view('krishnapal',compact('fullname'));
 });
@@ -47,6 +47,16 @@ Route::get('/krishnapal', function () {
 Route::get('/sunil', function () {
     $fname = 'Sunil Dollor';
     return view('sunil')->with('yyy', $fname);
+});
+
+
+Route::group(['prefix'=>'api/v1'],function(){
+    Route::get('sunil', function(){   //   /api/v1/sunil
+        echo 'hello from sunil';
+    });
+    Route::get('ravi', function(){   //   /api/v1/ravi
+        echo 'hello from ravi';
+    });
 });
 
 

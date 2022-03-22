@@ -18,7 +18,7 @@ class Category extends Model
     //2. Constructor
 
     //3. method
-    public function getCategory(){
+    public static function getCategory(){
         
         $data = DB::table('categories')->get(); // All records
             //->select('name', 'email as user_email')
