@@ -269,6 +269,8 @@ Blade Templating System (Frontend/Views)
 
 Data (Database)(Data)  <---- (Model)  <----- Controller <----- View (Form)
 
+Data (Database)  ----> (Model)(Data)  -----> Controller -----> View (Form)
+
 form 
 Action = Where to send = Kaha bhejna hai
 		ResourceController  ---> store method
@@ -296,3 +298,20 @@ route() ------- point to ---> web.php (Laravel Routing System)
 
 
  How to prefix the api in laravel
+
+ How to validate data in store method
+how to validate data in laravel
+
+
+There are two ways to validate data in laravel
+
+Store method
+1. $request->validate()
+2. aValidator manually using facade (Validator::make()).
+
+
+laravel validation alphabet only
+
+only alphabets
+
+regex:/^[a-z A-Z]+$/u

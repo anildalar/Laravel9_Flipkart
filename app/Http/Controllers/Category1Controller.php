@@ -6,6 +6,8 @@ use App\Models\Category;
 
 use Illuminate\Http\Request;
 
+use Session;
+
 class Category1Controller extends Controller
 {
     /**
@@ -49,7 +51,24 @@ class Category1Controller extends Controller
     {
         //
         //dd($request->all());
+        //Validation checking
+
+        // Valiation 1.
+
+        //1. Category Name should be in alphabets
+        //2. Category Name should min 3 characters
+        //3. Category Name should be mendatory
+        $validated = $request->validate([
+            'cat_name' => 'required|regex:/^[a-z A-Z]+$/u|min:3',
+            'cat_desc' => 'required',
+        ]);
+
+        //Validation Pass
+        
+
         Category::storeCategory($request->all()); //Actual arguemtn
+        Session::flash('message', 'Category Stored successfully'); 
+        return redirect('category/create');
     }
 
     /**

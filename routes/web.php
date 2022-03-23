@@ -50,14 +50,7 @@ Route::get('/sunil', function () {
 });
 
 
-Route::group(['prefix'=>'api/v1'],function(){
-    Route::get('sunil', function(){   //   /api/v1/sunil
-        echo 'hello from sunil';
-    });
-    Route::get('ravi', function(){   //   /api/v1/ravi
-        echo 'hello from ravi';
-    });
-});
+
 
 
 
@@ -76,6 +69,6 @@ Route::get('profile', [Anil::class, 'display']);
 // :: Scope resoulution operator
 
 Route::get('category', [Category1Controller::class, 'index']);
-Route::get('category/create', [Category1Controller::class, 'create']);
+Route::get('category/create', [Category1Controller::class, 'create'])->name("category.create");
 
 Route::post('category/store', [Category1Controller::class, 'store'])->name("category.store");

@@ -20,30 +20,14 @@ class Category extends Model
     //3. method
     public static function getCategory(){
         
+        //Query BUilder
         $data = DB::table('categories')->get(); // All records
-            //->select('name', 'email as user_email')
-            
-
-        /* $data = [
-            [
-                'category_name'=>'Electronics2',
-                'category_desc'=>'Electronics Descritpion'
-            ],
-            [
-                'category_name'=>'Home Appliances2',
-                'category_desc'=>'Home Appliances Descritpion'
-            ],
-            [
-                'category_name'=>'Faishion2',
-                'category_desc'=>'Faishion Descritpion'
-            ],
-            
-        ]; */
+    
 
         return $data;
     }
 
-    public function storeCategory($data){ //formal argument
+    public static function storeCategory($data){ //formal argument
        // echo 'Model DD';
        // echo $data['cat_name'];
        // echo $data['cat_desc'];

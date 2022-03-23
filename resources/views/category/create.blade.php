@@ -14,11 +14,24 @@
     <div class="container">
         
         <div class="row">
+
             <div class="col-6 offset-3 pt-5">
                 <div class="text-center">
                     <a href="{{ URL::to('/category') }}" class="btn btn-success">Create new category</a>
                 </div>
                 <h1 class="d-flex justify-content-center">Category Create Form</h1>
+                @if(Session::has('message'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <form action="{{ route('category.store') }}" method="POST">
                     @csrf    
                     <div class="mb-3">
