@@ -72,3 +72,11 @@ Route::get('category', [Category1Controller::class, 'index']);
 Route::get('category/create', [Category1Controller::class, 'create'])->name("category.create");
 
 Route::post('category/store', [Category1Controller::class, 'store'])->name("category.store");
+
+Route::get('category/show/{id}', [Category1Controller::class, 'show'])->name("category.show");
+
+Route::get('category/edit/{id}', [Category1Controller::class, 'edit'])->name("category.edit");
+
+Route::post('category/update', [Category1Controller::class, 'update'])->name("category.update");
+
+Route::get('category/destroy/{id}', [Category1Controller::class, 'destroy'])->name("category.destroy");

@@ -39,5 +39,17 @@ class Category extends Model
         ]);
     }
 
+    public static function updateCategory($data){ //formal argument
+        // echo 'Model DD';
+        // echo $data['cat_name'];
+        // echo $data['cat_desc'];
+         //dd($data);
+        DB::table('categories')
+         ->where('id', $data['id'])
+         ->update([
+            'category_name' => $data['cat_name'],
+            'category_desc' => $data['cat_desc']
+        ]);
+     }
 
 }

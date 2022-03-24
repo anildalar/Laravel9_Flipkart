@@ -77,9 +77,13 @@ class Category1Controller extends Controller
      * @param  \App\Models\Category1  $category1
      * @return \Illuminate\Http\Response
      */
-    public function show(Category1 $category1)
+    public function show($id)
     {
         //
+        //echo 'Hello from show method';
+        return view('category.show', [
+            'category' => Category::findOrFail($id) //Elequent 
+        ]);
     }
 
     /**
@@ -88,9 +92,12 @@ class Category1Controller extends Controller
      * @param  \App\Models\Category1  $category1
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category1 $category1)
+    public function edit($id)
     {
         //
+        return view('category.edit', [
+            'category' => Category::findOrFail($id) //Elequent 
+        ]);//foldername.filename
     }
 
     /**
@@ -100,9 +107,25 @@ class Category1Controller extends Controller
      * @param  \App\Models\Category1  $category1
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category1 $category1)
+    public function update(Request $request)
     {
         //
+        // Valiation 1.
+
+        //1. Category Name should be in alphabets
+        //2. Category Name should min 3 characters
+        //3. Category Name should be mendatory
+        $validated = $request->validate([
+            'cat_name' => 'required|regex:/^[a-z A-Z]+$/u|min:3',
+            'cat_desc' => 'required',
+        ]);
+
+        //Validation Pass
+        
+
+        Category::updateCategory($request->all()); //Actual arguemtn
+        Session::flash('message', 'Category Updated successfully'); 
+        return redirect('category/create');
     }
 
     /**
@@ -111,8 +134,12 @@ class Category1Controller extends Controller
      * @param  \App\Models\Category1  $category1
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category1 $category1)
+    public function destroy($id)
     {
         //
+        Category::findOrFail($id)->delete();
+
+        Session::flash('message', 'Category Deleted successfully'); 
+        return redirect('category');
     }
 }
