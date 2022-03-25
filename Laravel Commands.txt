@@ -315,3 +315,7 @@ laravel validation alphabet only
 only alphabets
 
 regex:/^[a-z A-Z]+$/u
+
+How to share data globally in laravle ?
+
+https://laravel.com/docs/9.x/views#sharing-data-with-all-views
